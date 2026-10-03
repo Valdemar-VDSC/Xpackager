@@ -54,9 +54,10 @@ It is written in French for now.
 
 ## Support the project
 
-XPackager is **free**. A donation encourages what comes next if the tool serves you well.
+XPackager is **free**. A donation encourages what comes next if the tool serves you well —
+€10, €20 or €50, or whatever you choose.
 
-[![Donate with PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=JC8AYAXZS4MDA)
+[![Donate with PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=J5GEC6T9ZX2XE)
 
 Or by scanning this code:
 

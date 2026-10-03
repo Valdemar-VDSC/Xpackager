@@ -55,9 +55,10 @@ vérifié.
 
 ## Soutenir
 
-XPackager est **gratuit**. Un don encourage la suite si l'outil vous rend service.
+XPackager est **gratuit**. Un don encourage la suite si l'outil vous rend service —
+10, 20 ou 50 €, ou le montant de votre choix.
 
-[![Faire un don avec PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=JC8AYAXZS4MDA)
+[![Faire un don avec PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=J5GEC6T9ZX2XE)
 
 Ou en scannant ce code :
 
