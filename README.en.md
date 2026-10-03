@@ -45,12 +45,10 @@ notarized — it is its own demonstration.
 
 ## Getting started
 
-The [guide](GUIDE.md) starts from nothing: the application has just been downloaded and
+The [guide](GUIDE.en.md) starts from nothing: the application has just been downloaded and
 never opened. It covers the first-launch environment check, obtaining the certificates from
 Apple — the long part, and the one people get wrong most often —, storing a notarization
 profile, then a complete worked example up to the verified package.
-
-It is written in French for now.
 
 ## Support the project
 

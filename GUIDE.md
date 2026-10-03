@@ -1,3 +1,5 @@
+*[English version: [GUIDE.en.md](GUIDE.en.md)]*
+
 # Prise en main de XPackager
 
 Ce guide part de zéro : vous venez de télécharger XPackager, vous ne l'avez jamais ouvert,
