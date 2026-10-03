@@ -1,3 +1,5 @@
+*[English version: [CHANGELOG.en.md](CHANGELOG.en.md)]*
+
 # Journal des versions
 
 ## 1.2.0
