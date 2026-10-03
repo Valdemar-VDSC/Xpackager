@@ -6,7 +6,7 @@ Builds **macOS installers** — `.pkg` files that are signed, notarized and stap
 project you set up in a graphical interface, without writing a line of `pkgbuild` or
 `productbuild`.
 
-Targets **macOS 15** and later.
+Targets **macOS 15** and later. Free — [supported by your donations](#support-the-project).
 
 This repository carries the **documentation** and the **released builds**. The application's
 source is not here.
@@ -52,12 +52,25 @@ profile, then a complete worked example up to the verified package.
 
 It is written in French for now.
 
+## Support the project
+
+XPackager is **free**. A donation encourages what comes next if the tool serves you well.
+
+[![Donate with PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=JC8AYAXZS4MDA)
+
+Or by scanning this code:
+
+<img src="assets/donate-qr.png" width="150" alt="PayPal donation QR code">
+
+The button is in the application too: **About XPackager**, and in the **Help ▸ Donate…**
+menu.
+
 ## What it is made with
 
 XPackager is written in **Xojo**, on top of
 **[VDSTools](https://github.com/Valdemar-VDSC/VDSTools-dist)** — native macOS window chrome,
 sidebar, toolbar and controls, in pure Xojo.
 
-## Support
+## Getting help
 
 A question, a problem: **support@vdsc.fr**, or this repository's [issues](../../issues).

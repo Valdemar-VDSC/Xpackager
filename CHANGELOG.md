@@ -31,6 +31,11 @@ l'application et ne se voyait, autrement, qu'au bout d'une construction échoué
 Un certificat de développement y reçoit son propre message : il ressemble à un Developer ID
 dans un menu de signature, et Apple refuse la notarisation avec.
 
+### Donationware
+
+XPackager est gratuit. Un bouton de don figure dans la fenêtre **À propos** et dans le menu
+**Aide ▸ Faire un don…**
+
 ### Notes
 
 - Exige **macOS 15**.

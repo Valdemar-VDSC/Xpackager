@@ -6,7 +6,7 @@ Fabrique des **installateurs macOS** — des `.pkg` signés, notarisés et agraf
 d'un projet que l'on règle dans une interface, sans écrire une ligne de `pkgbuild` ni de
 `productbuild`.
 
-Cible **macOS 15** et au-delà.
+Cible **macOS 15** et au-delà. Gratuit — [soutenu par vos dons](#soutenir).
 
 Ce dépôt porte la **documentation** et les **versions distribuées**. Le source de
 l'application n'y figure pas.
@@ -52,6 +52,19 @@ ouverte. Il couvre la feuille de vérification du premier démarrage, l'obtentio
 certificats chez Apple — la partie longue, et celle où l'on se trompe le plus —,
 l'enregistrement d'un profil de notarisation, puis un exemple complet jusqu'au paquet
 vérifié.
+
+## Soutenir
+
+XPackager est **gratuit**. Un don encourage la suite si l'outil vous rend service.
+
+[![Faire un don avec PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=JC8AYAXZS4MDA)
+
+Ou en scannant ce code :
+
+<img src="assets/donate-qr.png" width="150" alt="Code QR de donation PayPal">
+
+Le bouton se trouve aussi dans l'application : **À propos de XPackager**, et dans le menu
+**Aide ▸ Faire un don…**
 
 ## Avec quoi c'est fait
 
