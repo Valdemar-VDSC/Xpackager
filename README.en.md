@@ -19,7 +19,7 @@ Everything is in the [latest release](../../releases/latest):
 
 | File | What it is |
 |---|---|
-| `XPackager.pkg` | The application and, optionally, its command line tool |
+| `XPackager-x.y.z.pkg` | The application and, optionally, its command line tool |
 
 The package installs with a double click. It is itself built by XPackager, signed and
 notarized — it is its own demonstration.

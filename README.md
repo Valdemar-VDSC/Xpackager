@@ -19,7 +19,7 @@ Tout est dans la [dernière version](../../releases/latest) :
 
 | Fichier | Ce que c'est |
 |---|---|
-| `XPackager.pkg` | L'application et, en option, son outil en ligne de commande |
+| `XPackager-x.y.z.pkg` | L'application et, en option, son outil en ligne de commande |
 
 Le paquet s'installe d'un double-clic. Il est lui-même fabriqué par XPackager, signé et
 notarisé — c'est sa propre démonstration.
