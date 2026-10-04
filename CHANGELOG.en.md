@@ -2,6 +2,15 @@
 
 # Changelog
 
+## 1.2.1
+
+Thirty-two labels had no translation at all and showed up in French whatever the system
+language: the **File** menu, the five project templates, the save-on-close question, the
+three panels explaining which certificate to choose, and a few labels in the settings
+window. They now speak the application's six languages.
+
+The getting-started guide is also available in English.
+
 ## 1.2.0
 
 First public release.

@@ -2,6 +2,16 @@
 
 # Journal des versions
 
+## 1.2.1
+
+Trente-deux libellés n'avaient aucune traduction et s'affichaient en français
+quelle que soit la langue du système : le menu **Fichier**, les cinq modèles de projet, la
+question d'enregistrement à la fermeture, les trois encarts qui expliquent quel certificat
+choisir, et quelques intitulés de la fenêtre des réglages. Ils parlent désormais les six
+langues de l'application.
+
+Le guide de prise en main existe aussi en anglais.
+
 ## 1.2.0
 
 Première version publique.
