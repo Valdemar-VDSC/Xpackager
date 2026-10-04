@@ -1,3 +1,5 @@
+![XPackager — installateurs macOS signés et notarisés](assets/banner-fr.png)
+
 *[English version: [README.en.md](README.en.md)]*
 
 # XPackager
