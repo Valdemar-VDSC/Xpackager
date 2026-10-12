@@ -242,14 +242,25 @@ Below it, the payload area: **drag your `.app` in from the Finder**. An applicat
 copied as is; a folder is imported with its whole tree. Select an item to adjust its
 **Permissions** — `755` for an executable, `644` for an ordinary file.
 
+Next to them, **Owner** and **Group** are for special cases only: a daemon, a folder a
+service must be able to write to. Left empty — the normal case — the item belongs to
+`root:wheel`. Filled in, they are applied at the end of the installation, to the item and to
+everything inside it; an item placed below can say otherwise for its own subtree.
+
 The **Install options** (*User-changeable*, *Selected by default*, *Visible in the custom
 list*) only make sense with several components: that is what produces the checkboxes of a
 custom installation. With a single component, leave them alone.
+
+A component can also be a **choice group**. It installs nothing: it gathers under a single
+checkbox the components that name it in their **Under** menu. That is what produces the
+two-level lists of larger installers.
 
 ### 5.4 Requirements page
 
 - **Minimum macOS version**: `15.0` for instance. Left empty, no version is imposed.
 - **Allowed architectures**: Apple Silicon, Intel, or both.
+- **Install on the startup volume only**: forbids installing on another disk or into the
+  user's home folder. Required for anything living in `/Library` — a daemon, a launch item.
 
 You can also add conditions — presence of a file, available memory — that block the
 installation with a message.

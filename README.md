@@ -29,12 +29,14 @@ notarisé — c'est sa propre démonstration.
 ## Ce qu'il fait
 
 - **Le contenu à installer** se compose par glisser-déposer depuis le Finder : une `.app`,
-  un dossier avec son arborescence, un outil en ligne de commande. Permissions ajustables
-  par élément.
+  un dossier avec son arborescence, un outil en ligne de commande. Permissions, propriétaire
+  et groupe ajustables par élément.
 - **Plusieurs composants** donnent une installation personnalisée, avec ses cases à cocher,
-  ses choix présélectionnés et ses scripts d'avant et d'après installation.
+  ses choix présélectionnés et ses scripts d'avant et d'après installation. Un composant peut
+  être un **groupe** qui réunit les autres sous une seule case, sur plusieurs niveaux.
 - **Les prérequis** bloquent l'installation hors de leur domaine : version minimale de
-  macOS, architectures autorisées, présence d'un fichier, mémoire disponible.
+  macOS, architectures autorisées, présence d'un fichier, mémoire disponible, installation
+  réservée au volume de démarrage.
 - **Les quatre écrans de l'installateur** — Bienvenue, Lisez-moi, Licence, Conclusion — se
   rédigent dans un éditeur riche, ou s'importent depuis un `.rtf` existant. Image de fond
   comprise.

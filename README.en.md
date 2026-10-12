@@ -29,11 +29,12 @@ notarized — it is its own demonstration.
 ## What it does
 
 - **The payload** is assembled by dragging from the Finder: an `.app`, a folder with its
-  whole tree, a command line tool. Permissions can be set per item.
+  whole tree, a command line tool. Permissions, owner and group can be set per item.
 - **Several components** produce a custom installation, with its checkboxes, its
-  preselected choices and its pre- and post-install scripts.
+  preselected choices and its pre- and post-install scripts. A component can be a **group**
+  gathering the others under a single checkbox, over several levels.
 - **Requirements** block installation outside their range: minimum macOS version, allowed
-  architectures, presence of a file, available memory.
+  architectures, presence of a file, available memory, startup volume only.
 - **The installer's four screens** — Welcome, Read Me, License, Conclusion — are written in
   a rich text editor, or imported from an existing `.rtf`. Background image included.
 - **A multilingual installer** is described in the same project: every screen, the title and

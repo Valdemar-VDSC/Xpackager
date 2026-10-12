@@ -2,6 +2,34 @@
 
 # Changelog
 
+## 1.3.0
+
+### Choice hierarchy
+
+A component can now be a **choice group**: it installs nothing and gathers under a single
+checkbox the components that name it in their **Under** menu. Groups nest, which produces
+the multi-level lists of larger installers. A parentage that would loop back on itself is
+discarded at build time rather than producing an unreadable installer.
+
+### Owner and group per item
+
+Every payload item accepts an **owner** and a **group**. Left empty — the normal case — it
+belongs to `root:wheel`, as before. Filled in, they are applied at the end of the
+installation, to the item and to everything inside it; an item placed below takes over for
+its own subtree. Enough to ship a daemon, or a folder a service must be able to write to.
+
+### Install on the startup volume only
+
+A checkbox in the requirements forbids installing on another disk or into the user's home
+folder. Required for anything living in `/Library`.
+
+### Fixes
+
+- Switching component refreshed the page's values without laying it out again: rows from the
+  previous component stayed on screen.
+- The "Choice group" switch was not clickable — it belonged to the wrong box.
+- Two empty lists were written as `{}` instead of `[]` in the project file.
+
 ## 1.2.1
 
 Thirty-two labels had no translation at all and showed up in French whatever the system

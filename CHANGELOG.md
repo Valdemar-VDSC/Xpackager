@@ -2,6 +2,36 @@
 
 # Journal des versions
 
+## 1.3.0
+
+### Hiérarchie de choix
+
+Un composant peut désormais être un **groupe de choix** : il n'installe rien et réunit sous
+une seule case à cocher les composants qui le désignent dans leur menu **Sous**. Les groupes
+s'emboîtent, ce qui donne les listes à plusieurs niveaux des installateurs volumineux. Une
+parenté qui bouclerait sur elle-même est écartée à la construction plutôt que de produire un
+installateur illisible.
+
+### Propriétaire et groupe par élément
+
+Chaque élément du contenu accepte un **propriétaire** et un **groupe**. Laissés vides — le
+cas normal — il appartient à `root:wheel`, comme avant. Renseignés, ils sont posés à la fin
+de l'installation, sur l'élément et sur tout ce qu'il contient ; un élément placé en dessous
+reprend la main sur son propre sous-arbre. De quoi livrer un démon, ou un dossier qu'un
+service doit pouvoir écrire.
+
+### Installer sur le volume de démarrage uniquement
+
+Une case dans les prérequis interdit l'installation sur un autre disque et dans le dossier de
+départ de l'utilisateur. Indispensable pour tout ce qui vit dans `/Library`.
+
+### Corrections
+
+- Changer de composant rafraîchissait les valeurs de la page sans la reposer : des lignes de
+  l'ancien composant restaient à l'écran.
+- L'interrupteur « Groupe de choix » n'était pas cliquable — il appartenait au mauvais cadre.
+- Deux listes vides s'écrivaient `{}` au lieu de `[]` dans le fichier de projet.
+
 ## 1.2.1
 
 Trente-deux libellés n'avaient aucune traduction et s'affichaient en français

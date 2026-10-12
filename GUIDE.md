@@ -245,15 +245,28 @@ est copiée telle quelle ; un dossier est importé avec toute son arborescence. 
 élément pour ajuster ses **Permissions** — `755` pour un exécutable, `644` pour un fichier
 ordinaire.
 
+À côté, **Propriétaire** et **Groupe** ne servent qu'aux cas particuliers : un démon, un
+dossier qu'un service doit pouvoir écrire. Vides — le cas normal — l'élément appartient à
+`root:wheel`. Renseignés, ils sont posés à la fin de l'installation, sur l'élément et sur
+tout ce qu'il contient ; un élément placé en dessous peut dire autre chose pour son propre
+sous-arbre.
+
 Les **Options d'installation** (*Modifiable par l'utilisateur*, *Sélectionné par défaut*,
 *Visible dans la liste personnalisée*) ne prennent leur sens qu'avec plusieurs composants :
 c'est ce qui donne les cases à cocher de l'installation personnalisée. Pour un composant
 unique, laissez-les tranquilles.
 
+Un composant peut aussi être un **groupe de choix**. Il n'installe rien : il réunit sous une
+seule case à cocher les composants qui le désignent dans leur menu **Sous**. C'est ce qui
+donne les listes à deux niveaux des installateurs volumineux.
+
 ### 5.4 Page Prérequis
 
 - **Version minimale de macOS** : `15.0` par exemple. Vide, aucune version n'est imposée.
 - **Architectures autorisées** : Apple Silicon, Intel, ou les deux.
+- **Installer sur le volume de démarrage uniquement** : interdit l'installation sur un autre
+  disque et dans le dossier de départ de l'utilisateur. Indispensable pour tout ce qui vit
+  dans `/Library` — un démon, un élément de lancement.
 
 Vous pouvez aussi ajouter des conditions — présence d'un fichier, mémoire disponible — qui
 bloquent l'installation avec un message.
