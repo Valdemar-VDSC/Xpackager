@@ -41,6 +41,20 @@ La feuille reste disponible à tout moment par **Aide ▸ Vérifier l'environnem
 bouton **Revérifier** la relance sans quitter l'application. Gardez-la ouverte pendant tout
 ce qui suit : chaque étape franchie s'y lit immédiatement.
 
+### Se tenir à jour
+
+**XPackager ▸ Rechercher les mises à jour…** interroge le dépôt et affiche la version
+installée, la dernière publiée et ses nouveautés dans les deux langues. S'il y a du neuf, le
+bouton **Télécharger** met le paquet dans vos *Téléchargements*.
+
+Avant de le remettre à l'installateur d'Apple, XPackager le **contrôle lui-même** : un
+fichier téléchargé par une application ne porte pas la marque de quarantaine, Gatekeeper ne
+l'examinerait donc pas à l'ouverture. XPackager vérifie qu'il est signé, notarisé, et signé
+par le bon éditeur. Si l'un des trois manque, il ne l'ouvre pas et affiche ce qu'il a trouvé.
+
+La recherche se fait aussi au démarrage, en silence : rien ne s'affiche quand vous êtes à
+jour. La case **Rechercher les mises à jour au démarrage**, au bas de la fenêtre, la coupe.
+
 ---
 
 ## 2. Les outils d'Apple

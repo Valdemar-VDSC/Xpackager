@@ -2,6 +2,23 @@
 
 # Changelog
 
+## 1.4.0
+
+### Checking for updates
+
+A **Check for Updates…** item in the application menu queries the latest published version,
+shows the installed version alongside it, and lists what is new — rendered, not as raw
+Markdown.
+
+The **Download** button puts the package in your *Downloads* folder, with a progress bar.
+**Before handing it to Apple's Installer, XPackager checks it itself**: a file downloaded by
+an application does not carry the quarantine flag, so Gatekeeper would not examine it on
+opening. XPackager verifies that it is signed, notarized, and signed by the expected
+publisher. If any of the three is missing, it does not open it and shows what it found.
+
+The check also runs at startup, **silently**: nothing appears when you are up to date. A
+checkbox at the bottom of the window turns it off.
+
 ## 1.3.0
 
 ### Choice hierarchy

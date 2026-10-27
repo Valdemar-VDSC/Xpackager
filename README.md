@@ -48,6 +48,8 @@ notarisé — c'est sa propre démonstration.
   le paquet part chez Apple et revient avec son ticket agrafé.
 - **Un outil en ligne de commande**, `xpackagerbuild`, construit le même paquet à partir du
   même fichier de projet, pour un script de livraison ou une intégration continue.
+- **Les mises à jour** se cherchent depuis le menu de l'application. Le paquet téléchargé
+  est vérifié — signature, notarisation, éditeur — avant d'être remis à l'installateur.
 
 ## Premiers pas
 

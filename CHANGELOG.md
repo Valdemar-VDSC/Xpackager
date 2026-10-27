@@ -2,6 +2,24 @@
 
 # Journal des versions
 
+## 1.4.0
+
+### Rechercher les mises à jour
+
+Une entrée **Rechercher les mises à jour…** dans le menu de l'application interroge la
+dernière version publiée, affiche la version installée en regard de la dernière, et donne
+ses nouveautés — rendues, et non en Markdown brut.
+
+Le bouton **Télécharger** dépose le paquet dans vos *Téléchargements*, avec une barre de
+progression. **Avant de le remettre à l'installateur d'Apple, XPackager le contrôle
+lui-même** : un fichier téléchargé par une application ne porte pas la marque de
+quarantaine, Gatekeeper ne l'examinerait donc pas à l'ouverture. XPackager vérifie qu'il
+est signé, notarisé, et signé par l'éditeur attendu. Si l'un des trois manque, il ne
+l'ouvre pas et affiche ce qu'il a trouvé.
+
+La recherche se fait aussi au démarrage, **en silence** : rien ne s'affiche quand vous êtes
+à jour. Une case au bas de la fenêtre l'arrête.
+
 ## 1.3.0
 
 ### Hiérarchie de choix

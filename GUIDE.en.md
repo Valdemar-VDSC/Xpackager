@@ -41,6 +41,20 @@ The sheet stays available at any time from **Help ▸ Check environment…**, an
 again** button re-runs it without leaving the application. Keep it open throughout what
 follows: every step you clear shows up there immediately.
 
+### Keeping up to date
+
+**XPackager ▸ Check for Updates…** queries the repository and shows the installed version,
+the latest published one and its release notes in both languages. When there is something
+new, the **Download** button puts the package in your *Downloads* folder.
+
+Before handing it to Apple's Installer, XPackager **checks it itself**: a file downloaded by
+an application does not carry the quarantine flag, so Gatekeeper would not examine it on
+opening. XPackager verifies that it is signed, notarized, and signed by the expected
+publisher. If any of the three is missing, it does not open it and shows what it found.
+
+The check also runs at startup, silently: nothing appears when you are up to date. The
+**Check for updates at startup** box at the bottom of the window turns it off.
+
 ---
 
 ## 2. Apple's tools

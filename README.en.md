@@ -45,6 +45,8 @@ notarized — it is its own demonstration.
   comes back with its ticket stapled.
 - **A command line tool**, `xpackagerbuild`, builds the same package from the same project
   file, for a delivery script or continuous integration.
+- **Updates** can be checked from the application menu. The downloaded package is verified
+  — signature, notarization, publisher — before it is handed to the Installer.
 
 ## Getting started
 
