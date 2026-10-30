@@ -22,7 +22,7 @@ selected.
 
 ### An uninstall script
 
-**File ▸ Generate an uninstall script…** writes a `.sh` script to ship alongside your
+**File ▸ Generate an uninstaller script…** writes a `.sh` script to ship alongside your
 package. macOS offers no uninstaller, but it keeps an exact record of what each package laid
 down: the script reads those receipts, removes files and symlinks, then directories **only if
 they are left empty**, and forgets the receipts. Shared directories — `/Applications`,
