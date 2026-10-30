@@ -54,8 +54,8 @@ more than verify a signature.
 ### The detail pane scrolls
 
 The pane's four pages — settings, components, requirements, presentation — scroll when they do
-not fit the window. The window minimum drops from 780 to 600 points: enough to work on a
-13-inch laptop without a field staying out of reach.
+not fit the window. The window minimum drops from 780 to 600 points, so the pages stay
+reachable on a scaled-up display or in a half-screen window.
 
 ## 1.4.0
 

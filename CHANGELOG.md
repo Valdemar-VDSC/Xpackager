@@ -57,7 +57,8 @@ rien, et macOS en fait plus que vérifier une signature.
 
 Les quatre pages du volet — réglages, composants, prérequis, présentation — défilent quand
 elles ne tiennent pas dans la fenêtre. Le minimum de la fenêtre descend de 780 à 600 points :
-de quoi travailler sur un portable de 13 pouces sans qu'un champ reste hors d'atteinte.
+les pages restent atteignables sur un affichage mis à l'échelle ou dans une fenêtre à
+demi-écran.
 
 ## 1.4.0
 
