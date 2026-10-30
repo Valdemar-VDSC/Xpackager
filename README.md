@@ -33,7 +33,8 @@ notarisé — c'est sa propre démonstration.
   et groupe ajustables par élément.
 - **Plusieurs composants** donnent une installation personnalisée, avec ses cases à cocher,
   ses choix présélectionnés et ses scripts d'avant et d'après installation. Un composant peut
-  être un **groupe** qui réunit les autres sous une seule case, sur plusieurs niveaux.
+  être un **groupe** qui réunit les autres sous une seule case, sur plusieurs niveaux, et
+  nommer les **applications à quitter** avant que l'installation ne commence.
 - **Les prérequis** bloquent l'installation hors de leur domaine : version minimale de
   macOS, architectures autorisées, présence d'un fichier, mémoire disponible, installation
   réservée au volume de démarrage.
@@ -48,8 +49,13 @@ notarisé — c'est sa propre démonstration.
   le paquet part chez Apple et revient avec son ticket agrafé.
 - **Un outil en ligne de commande**, `xpackagerbuild`, construit le même paquet à partir du
   même fichier de projet, pour un script de livraison ou une intégration continue.
+- **Les paquets sont compressés** avec l'algorithme le plus récent dès qu'une version
+  minimale de macOS est déclarée : environ un tiers de poids en moins.
+- **Un script de désinstallation** se génère depuis les reçus que macOS tient à jour. Il
+  enlève ce que le paquet a posé, et seulement cela : les dossiers partagés restent.
 - **Les mises à jour** se cherchent depuis le menu de l'application. Le paquet téléchargé
-  est vérifié — signature, notarisation, éditeur — avant d'être remis à l'installateur.
+  est mis en quarantaine, comme le ferait un navigateur, puis vérifié — signature,
+  notarisation, éditeur — avant d'être remis à l'installateur.
 
 ## Premiers pas
 

@@ -47,10 +47,15 @@ ce qui suit : chaque étape franchie s'y lit immédiatement.
 installée, la dernière publiée et ses nouveautés dans les deux langues. S'il y a du neuf, le
 bouton **Télécharger** met le paquet dans vos *Téléchargements*.
 
-Avant de le remettre à l'installateur d'Apple, XPackager le **contrôle lui-même** : un
-fichier téléchargé par une application ne porte pas la marque de quarantaine, Gatekeeper ne
-l'examinerait donc pas à l'ouverture. XPackager vérifie qu'il est signé, notarisé, et signé
-par le bon éditeur. Si l'un des trois manque, il ne l'ouvre pas et affiche ce qu'il a trouvé.
+Le paquet est contrôlé **deux fois**. Un fichier téléchargé par une application ne porte pas
+la marque de quarantaine — c'est à celle qui télécharge de la poser, et sans elle macOS
+n'examine rien à l'ouverture. XPackager la pose donc, et l'analyse XProtect comme Gatekeeper
+font leur travail au moment d'ouvrir. Puis il **contrôle lui-même**, avant d'ouvrir quoi que
+ce soit : signé, notarisé, et signé par le bon éditeur. Si l'un des trois manque, il ne
+l'ouvre pas et affiche ce qu'il a trouvé — un dialogue système, lui, ne dirait pas pourquoi.
+
+La marque ne traverse pas le paquet : l'application installée n'en hérite pas, il n'y a donc
+rien à nettoyer après l'installation.
 
 La recherche se fait aussi au démarrage, en silence : rien ne s'affiche quand vous êtes à
 jour. La case **Rechercher les mises à jour au démarrage**, au bas de la fenêtre, la coupe.
@@ -270,6 +275,16 @@ Les **Options d'installation** (*Modifiable par l'utilisateur*, *Sélectionné p
 c'est ce qui donne les cases à cocher de l'installation personnalisée. Pour un composant
 unique, laissez-les tranquilles.
 
+**Applications à quitter** répond au cas de la mise à jour : remplacer une application
+pendant qu'elle tourne. Les identifiants listés là sont déclarés dans le paquet, et
+l'installateur demande de fermer ces applications avant d'installer — il ne s'en occupe que
+si ce composant est retenu. Le bouton **Choisir…** ouvre un sélecteur d'applications et lit
+l'identifiant dans celle que vous désignez : inutile de le connaître. Plusieurs applications
+se choisissent d'un coup, et la liste s'écrit aussi à la main, séparée par des virgules.
+
+> La marque de quarantaine, elle, ne traverse pas un paquet : l'application installée n'est
+> jamais mise en quarantaine, il n'y a donc rien à y nettoyer ensuite.
+
 Un composant peut aussi être un **groupe de choix**. Il n'installe rien : il réunit sous une
 seule case à cocher les composants qui le désignent dans leur menu **Sous**. C'est ce qui
 donne les listes à deux niveaux des installateurs volumineux.
@@ -281,6 +296,10 @@ donne les listes à deux niveaux des installateurs volumineux.
 - **Installer sur le volume de démarrage uniquement** : interdit l'installation sur un autre
   disque et dans le dossier de départ de l'utilisateur. Indispensable pour tout ce qui vit
   dans `/Library` — un démon, un élément de lancement.
+- **Compresser avec l'algorithme le plus récent** : actif par défaut, environ un tiers de
+  poids en moins — le paquet de XPackager lui-même passe de 22 à 15 Mo. L'option réclame une
+  version minimale de macOS valide au-dessus : sans elle `pkgbuild` refuse de construire, et
+  XPackager s'abstient alors d'y toucher. La légende sous l'interrupteur vous le dit.
 
 Vous pouvez aussi ajouter des conditions — présence d'un fichier, mémoire disponible — qui
 bloquent l'installation avec un message.
@@ -305,6 +324,25 @@ signature, `notarytool submit --wait`, puis `stapler staple`.
 Comptez une à deux minutes : c'est Apple qui prend ce temps, pas XPackager. La ligne
 `status: Accepted` puis `The staple and validate action worked!` concluent une construction
 réussie.
+
+### 5.6 bis Le désinstalleur
+
+**Fichier ▸ Générer un script de désinstallation…** écrit, à côté de votre paquet si vous le
+voulez, un script `.sh` exécutable à joindre à votre diffusion. macOS n'offre aucun
+désinstalleur, mais il tient le compte exact de ce que chaque paquet a posé : le script relit
+ces reçus — y compris ceux déposés dans le dossier de départ, que `pkgutil` ne trouve qu'avec
+`--volume` — enlève les fichiers et les liens, puis les dossiers **seulement s'ils sont
+restés vides**, et enfin oublie les reçus.
+
+Il ne devine donc rien : un fichier que votre paquet n'a pas installé n'est jamais touché, et
+le dossier qui l'abrite reste en place. Les emplacements du système, ceux de l'utilisateur et
+les dossiers partagés — `/Applications`, `/usr/local/bin`, `~/Library/Preferences` — sont
+épargnés même vides.
+
+```bash
+sudo ./uninstall-monpaquet.sh
+./uninstall-monpaquet.sh --dry-run   # énumère sans rien toucher
+```
 
 ### 5.7 Vérifier avant de diffuser
 
@@ -369,7 +407,14 @@ C'est ce qu'il faut employer depuis un script de livraison ou un pas de construc
 | Aucune identité dans le menu | certificat absent, ou clé privée sur une autre machine | section 3 |
 | `Team is not yet configured for notarization` | contrat développeur non signé | developer.apple.com ▸ Agreements |
 
-Pour lire le détail d'un refus d'Apple :
+Quand Apple refuse, XPackager va **chercher son journal tout seul** et le met en forme dans
+la fenêtre de construction : la phrase qui résume le refus, puis un bloc par problème — sa
+gravité, son message, les endroits concernés et le lien vers la page d'Apple qui explique
+quoi faire. Les problèmes identiques sont regroupés : une signature fautive fait répéter la
+même phrase pour chaque architecture, et deux cents lignes cachaient un seul défaut.
+
+Rien à faire au terminal, donc. Si vous y tenez quand même, ou si le JSON d'Apple devient
+illisible pour XPackager — il est alors affiché tel quel :
 
 ```bash
 xcrun notarytool log <identifiant-de-soumission> --keychain-profile <profil>

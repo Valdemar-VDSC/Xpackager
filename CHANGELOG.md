@@ -2,6 +2,63 @@
 
 # Journal des versions
 
+## 1.5.0
+
+### Des paquets plus légers d'un tiers
+
+Les composants sont désormais compressés avec l'algorithme le plus récent de `pkgbuild`. Le
+paquet de XPackager lui-même passe de 22,0 à 15,1 Mo, pour un contenu identique. L'option est
+active par défaut et se règle dans les prérequis. Elle réclame une version minimale de macOS
+valide au-dessus : sans elle `pkgbuild` refuse de construire, et XPackager s'abstient alors
+d'y toucher plutôt que de faire échouer la construction. La légende sous l'interrupteur le
+dit.
+
+### Applications à quitter
+
+Chaque composant accepte une liste d'**applications à quitter** : l'installateur demande de
+les fermer avant d'installer. C'est la réponse au remplacement d'une application en cours
+d'exécution — le cas de toute mise à jour. Le bouton **Choisir…** ouvre un sélecteur et lit
+l'identifiant dans l'application que vous désignez, inutile de le connaître. L'installateur
+ne s'en occupe que si ce composant est retenu.
+
+### Un script de désinstallation
+
+**Fichier ▸ Générer un script de désinstallation…** écrit un script `.sh` à joindre à votre
+diffusion. macOS n'offre aucun désinstalleur, mais il tient le compte exact de ce que chaque
+paquet a posé : le script relit ces reçus, enlève les fichiers et les liens, puis les
+dossiers **seulement s'ils sont restés vides**, et oublie les reçus. Les dossiers partagés —
+`/Applications`, `/usr/local/bin`, `~/Library/Preferences` et leurs semblables — sont épargnés
+même vides. Un essai à blanc affiche ce qui partirait sans rien toucher, et le script refuse
+de s'exécuter sans `sudo`.
+
+### Le refus d'Apple, en clair
+
+Quand la notarisation échoue, la fenêtre de construction affichait le JSON brut renvoyé par
+`notarytool`. Elle en donne maintenant un résumé : la raison en une phrase, puis chaque
+problème avec ses emplacements et le lien vers la page d'Apple qui l'explique. Les problèmes
+identiques sont regroupés — Apple répète la même phrase pour chaque binaire et chaque
+architecture, ce qui transformait un seul défaut en deux cents lignes.
+
+### Les téléchargements mis en quarantaine
+
+XPackager pose désormais la marque de quarantaine sur le paquet qu'il télécharge, comme le
+fait un navigateur. C'est à l'application qui télécharge de la poser ; sans elle, macOS
+n'examine rien à l'ouverture. Le paquet est donc contrôlé deux fois : par l'analyse XProtect
+et Gatekeeper si vous l'ouvrez vous-même depuis le Finder, et par XPackager lui-même — signé,
+notarisé, signé par le bon éditeur — avant qu'il ne soit remis à l'installateur. La marque ne
+traverse pas le paquet : l'application installée n'en hérite pas, il n'y a rien à nettoyer
+ensuite.
+
+Merci à Arnaud Nicolet de l'avoir signalé sur le forum Xojo. Les notes de la 1.4.0
+présentaient le contrôle interne comme le seul recours possible : poser la marque ne coûte
+rien, et macOS en fait plus que vérifier une signature.
+
+### Le volet de détail défile
+
+Les quatre pages du volet — réglages, composants, prérequis, présentation — défilent quand
+elles ne tiennent pas dans la fenêtre. Le minimum de la fenêtre descend de 780 à 600 points :
+de quoi travailler sur un portable de 13 pouces sans qu'un champ reste hors d'atteinte.
+
 ## 1.4.0
 
 ### Rechercher les mises à jour

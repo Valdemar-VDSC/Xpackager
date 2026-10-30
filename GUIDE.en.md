@@ -47,10 +47,16 @@ follows: every step you clear shows up there immediately.
 the latest published one and its release notes in both languages. When there is something
 new, the **Download** button puts the package in your *Downloads* folder.
 
-Before handing it to Apple's Installer, XPackager **checks it itself**: a file downloaded by
-an application does not carry the quarantine flag, so Gatekeeper would not examine it on
-opening. XPackager verifies that it is signed, notarized, and signed by the expected
-publisher. If any of the three is missing, it does not open it and shows what it found.
+The package is checked **twice**. A file downloaded by an application does not carry the
+quarantine flag — it is up to the downloading application to set it, and without it macOS
+examines nothing on opening. So XPackager sets it, and both XProtect's analysis and
+Gatekeeper do their work when the package is opened. Then it **checks it itself**, before
+opening anything: signed, notarized, and signed by the expected publisher. If any of the
+three is missing, it does not open it and shows what it found — a system dialog would not
+say why.
+
+The flag does not travel through the package: the installed application does not inherit it,
+so there is nothing to clear after installing.
 
 The check also runs at startup, silently: nothing appears when you are up to date. The
 **Check for updates at startup** box at the bottom of the window turns it off.
@@ -265,6 +271,16 @@ The **Install options** (*User-changeable*, *Selected by default*, *Visible in t
 list*) only make sense with several components: that is what produces the checkboxes of a
 custom installation. With a single component, leave them alone.
 
+**Applications to quit** answers the update case: replacing an application while it is
+running. The identifiers listed there are declared in the package, and the Installer asks
+for those applications to be closed before installing — it only bothers if this component is
+selected. The **Choose…** button opens an application picker and reads the identifier from
+whatever you point at, so you need not know it. Several applications can be picked at once,
+and the list can also be typed by hand, comma-separated.
+
+> The quarantine flag, by contrast, does not travel through a package: the installed
+> application is never quarantined, so there is nothing to clear afterwards.
+
 A component can also be a **choice group**. It installs nothing: it gathers under a single
 checkbox the components that name it in their **Under** menu. That is what produces the
 two-level lists of larger installers.
@@ -275,6 +291,10 @@ two-level lists of larger installers.
 - **Allowed architectures**: Apple Silicon, Intel, or both.
 - **Install on the startup volume only**: forbids installing on another disk or into the
   user's home folder. Required for anything living in `/Library` — a daemon, a launch item.
+- **Compress with the latest algorithm**: on by default, about a third smaller —
+  XPackager's own package goes from 22 to 15 MB. The option requires a valid minimum macOS
+  version above: without one `pkgbuild` refuses to build, so XPackager leaves compression
+  alone. The caption under the switch says so.
 
 You can also add conditions — presence of a file, available memory — that block the
 installation with a message.
@@ -298,6 +318,24 @@ mandatory: it is the fallback when a translation is missing.
 
 Allow one to two minutes: Apple takes that time, not XPackager. The line `status: Accepted`
 followed by `The staple and validate action worked!` concludes a successful build.
+
+### 5.6 bis The uninstaller
+
+**File ▸ Generate an uninstaller script…** writes an executable `.sh` script — next to your
+package if you like — to ship alongside it. macOS offers no uninstaller, but it keeps an
+exact record of what every package laid down: the script reads those receipts back —
+including the ones left in the home folder, which `pkgutil` only finds when told with
+`--volume` — removes the files and symbolic links, then the directories **only if they were
+left empty**, and finally forgets the receipts.
+
+So it guesses nothing: a file your package did not install is never touched, and the
+directory holding it stays. System locations, the user's own folders and shared directories —
+`/Applications`, `/usr/local/bin`, `~/Library/Preferences` — are spared even when empty.
+
+```bash
+sudo ./uninstall-mypackage.sh
+./uninstall-mypackage.sh --dry-run   # lists without touching anything
+```
 
 ### 5.7 Checking before you distribute
 
@@ -363,7 +401,14 @@ That is what to use from a delivery script or a build step.
 | `A required agreement is missing or has expired` | an Apple agreement is waiting for your signature | developer.apple.com ▸ Agreements |
 | `Team is not yet configured for notarization` | developer agreement not signed | developer.apple.com ▸ Agreements |
 
-To read the detail of a refusal from Apple:
+When Apple refuses, XPackager **fetches its log by itself** and lays it out in the build
+window: the sentence that summarises the refusal, then one block per issue — its severity,
+its message, the places concerned, and the link to Apple's page explaining what to do.
+Identical issues are grouped: a faulty signature repeats the same sentence for every
+architecture, and two hundred lines were hiding a single defect.
+
+So there is nothing to do in the Terminal. If you would rather, or if Apple's JSON becomes
+unreadable to XPackager — it is then shown verbatim:
 
 ```bash
 xcrun notarytool log <submission-id> --keychain-profile <profile>

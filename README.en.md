@@ -32,7 +32,8 @@ notarized — it is its own demonstration.
   whole tree, a command line tool. Permissions, owner and group can be set per item.
 - **Several components** produce a custom installation, with its checkboxes, its
   preselected choices and its pre- and post-install scripts. A component can be a **group**
-  gathering the others under a single checkbox, over several levels.
+  gathering the others under a single checkbox, over several levels, and can name the
+  **applications to quit** before installation starts.
 - **Requirements** block installation outside their range: minimum macOS version, allowed
   architectures, presence of a file, available memory, startup volume only.
 - **The installer's four screens** — Welcome, Read Me, License, Conclusion — are written in
@@ -45,8 +46,13 @@ notarized — it is its own demonstration.
   comes back with its ticket stapled.
 - **A command line tool**, `xpackagerbuild`, builds the same package from the same project
   file, for a delivery script or continuous integration.
-- **Updates** can be checked from the application menu. The downloaded package is verified
-  — signature, notarization, publisher — before it is handed to the Installer.
+- **Packages are compressed** with the latest algorithm as soon as a minimum macOS version
+  is declared: about a third smaller.
+- **An uninstall script** is generated from the receipts macOS keeps. It removes what the
+  package laid down, and only that: shared directories stay.
+- **Updates** can be checked from the application menu. The downloaded package is marked as
+  quarantined, as a browser would, then verified — signature, notarization, publisher —
+  before it is handed to the Installer.
 
 ## Getting started
 
